@@ -10,6 +10,7 @@ const config = {
   level,
 }
 const x = process.env.LOG_DESTINATION
+
 export const logger = process.env.LOG_DESTINATION
   ? pino(config, pino.destination(`${process.env.LOG_DESTINATION}${Math.random().toString()
     .substring(0, 5)}.log`))

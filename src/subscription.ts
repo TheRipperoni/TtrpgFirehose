@@ -19,7 +19,7 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
         return
       }
       const ops = await getOpsByType(evt)
-
+      ops.reposts.creates
       const likesToCreate: RepoLike[] = ops.likes.creates.filter((create) => {
           if (create.record.subject.uri.includes(did)) {
             return true
@@ -40,8 +40,10 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
           const text = create.record.text.toLowerCase()
           return text.startsWith('@bskyttrpg.bsky.social')
             || text.startsWith('accept')
+            || text.startsWith('aceit') //TODO
             || text === 'a'
             || text.startsWith('reject')
+            || text.startsWith('rejeit') //TODO
             || text === 'r'
             || text.startsWith('cancel')
             || text === 'c'
@@ -52,6 +54,7 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
               author: create.author,
               text: create.record.text,
               uri: create.uri,
+              lang: create.record.langs?.at(0) ?? null,
               cid: create.cid,
               rootUri: create.uri,
               rootCid: create.cid,
@@ -66,6 +69,7 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
               text: create.record.text,
               uri: create.uri,
               cid: create.cid,
+              lang: create.record.langs?.at(0) ?? null,
               rootUri: create.record.reply.root.uri,
               rootCid: create.record.reply.root.cid,
               parentUri: create.record.reply?.parent.uri ?? null,

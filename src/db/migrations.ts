@@ -43,3 +43,18 @@ migrations['001'] = {
     await db.schema.dropTable('repo_like').execute()
   },
 }
+
+migrations['002'] = {
+  async up(db: Kysely<unknown>) {
+    await db.schema
+      .alterTable('post')
+      .addColumn('lang', 'varchar')
+      .execute()
+  },
+  async down(db: Kysely<unknown>) {
+    await db.schema
+      .alterTable('post')
+      .dropColumn('lang')
+      .execute()
+  },
+}
