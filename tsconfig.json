@@ -1,21 +1,11 @@
 
 {
   "compilerOptions": {
-    "lib": [
-      "ESNext"
-    ],
-    "outDir": "dist",
-    "module": "commonjs",
-    "target": "es2017",
+    "module": "nodenext",
+    "target": "ESNext",
     "esModuleInterop": true,
-    "moduleResolution": "node",
-    "alwaysStrict": true,
-    "allowUnreachableCode": false,
+    "moduleResolution": "node16",
+    "strict": true,
     "strictNullChecks": true,
-    "skipLibCheck": true
-  },
-  "include": ["./src"],
-  "exclude": [
-    "node_modules"
-  ]
+  }
 }

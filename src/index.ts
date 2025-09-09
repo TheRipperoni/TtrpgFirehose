@@ -18,7 +18,7 @@ const run = async () => {
   })
   await server.start()
   await new Promise(f => setTimeout(f, 3000))
-  logger.info('Firehose Service Started')
+  logger.info('Jetstream Service Started')
 }
 
 const maybeStr = (val?: string) => {
